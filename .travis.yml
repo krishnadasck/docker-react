@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t krishnadasck/docker-react krishnadas-f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true krishnadasck/docker-react npm run test -- --coverage
